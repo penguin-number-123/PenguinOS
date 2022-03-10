@@ -5,7 +5,17 @@ namespace PenguinOS.text
 {
     public class textutil
     {
-        private string[] Insertarr(int pos, string insert, string[] arr)
+        public string clipboard = "";
+
+        public void copy(string sel)
+        {
+            clipboard = sel;
+        }
+        public string paste()
+        {
+            return clipboard;
+        }
+        public string[] Insertarr(int pos, string insert, string[] arr)
         {
             if (arr.Length > 0)
             {
@@ -29,7 +39,7 @@ namespace PenguinOS.text
                 return newarr;
             }
         }
-        private string[] addarr(string add, string[] arr)
+        public string[] addarr(string add, string[] arr)
         {
             int i;
             string[] narr = new string[arr.Length + 1];
@@ -40,7 +50,7 @@ namespace PenguinOS.text
             narr[arr.Length] = add;
             return narr;
         }
-        private string[] shortarr(string[] arr)
+        public string[] shortarr(string[] arr)
         {
             string[] narr = new string[arr.Length - 1];
             for (var i = 0; i < arr.Length - 1; i++)

@@ -37,7 +37,7 @@
         <ISO_Description>Creates a bootable ISO image which can be burned to a DVD. After running the selected project, an explorer window will open containing the ISO file. The ISO file can then be burned to a CD or DVD and used to boot a physical or virtual system.</ISO_Description>
         <ISO_Deployment>ISO</ISO_Deployment>
         <ISO_Launch>None</ISO_Launch>
-        <ISO_DebugEnabled>True</ISO_DebugEnabled>
+        <ISO_DebugEnabled>False</ISO_DebugEnabled>
         <ISO_DebugMode>Source</ISO_DebugMode>
         <ISO_IgnoreDebugStubAttribute>False</ISO_IgnoreDebugStubAttribute>
         <ISO_CosmosDebugPort>Serial: COM1</ISO_CosmosDebugPort>
@@ -64,6 +64,38 @@
         <USB_ISOFile>bin\Debug\net5.0\PinguinDos.iso</USB_ISOFile>
         <USB_CompileVBEMultiboot>False</USB_CompileVBEMultiboot>
         <USB_ExtractMapFile>False</USB_ExtractMapFile>
+        <HyperV_StackCorruptionDetectionEnabled>True</HyperV_StackCorruptionDetectionEnabled>
+        <HyperV_StackCorruptionDetectionLevel>MethodFooters</HyperV_StackCorruptionDetectionLevel>
+        <HyperV_Description>Use Hyper-V to deploy and debug.</HyperV_Description>
+        <HyperV_Deployment>ISO</HyperV_Deployment>
+        <HyperV_Launch>HyperV</HyperV_Launch>
+        <HyperV_DebugEnabled>False</HyperV_DebugEnabled>
+        <HyperV_DebugMode>Source</HyperV_DebugMode>
+        <HyperV_IgnoreDebugStubAttribute>False</HyperV_IgnoreDebugStubAttribute>
+        <HyperV_CosmosDebugPort>Serial: COM1</HyperV_CosmosDebugPort>
+        <HyperV_VisualStudioDebugPort>Pipe: CosmosSerial</HyperV_VisualStudioDebugPort>
+        <HyperV_PxeInterface>192.168.0.8</HyperV_PxeInterface>
+        <HyperV_EnableGDB>False</HyperV_EnableGDB>
+        <HyperV_StartCosmosGDB>False</HyperV_StartCosmosGDB>
+        <HyperV_ISOFile>bin\Debug\net5.0\PinguinDos.iso</HyperV_ISOFile>
+        <HyperV_CompileVBEMultiboot>False</HyperV_CompileVBEMultiboot>
+        <HyperV_ExtractMapFile>False</HyperV_ExtractMapFile>
+        <Bochs_StackCorruptionDetectionEnabled>True</Bochs_StackCorruptionDetectionEnabled>
+        <Bochs_StackCorruptionDetectionLevel>MethodFooters</Bochs_StackCorruptionDetectionLevel>
+        <Bochs_Description>Use Bochs emulator to deploy and debug.</Bochs_Description>
+        <Bochs_Deployment>ISO</Bochs_Deployment>
+        <Bochs_Launch>Bochs</Bochs_Launch>
+        <Bochs_DebugEnabled>False</Bochs_DebugEnabled>
+        <Bochs_DebugMode>Source</Bochs_DebugMode>
+        <Bochs_IgnoreDebugStubAttribute>False</Bochs_IgnoreDebugStubAttribute>
+        <Bochs_CosmosDebugPort>Serial: COM1</Bochs_CosmosDebugPort>
+        <Bochs_VisualStudioDebugPort>Pipe: Cosmos\Serial</Bochs_VisualStudioDebugPort>
+        <Bochs_PxeInterface>192.168.0.8</Bochs_PxeInterface>
+        <Bochs_EnableGDB>False</Bochs_EnableGDB>
+        <Bochs_StartCosmosGDB>False</Bochs_StartCosmosGDB>
+        <Bochs_ISOFile>bin\Debug\net5.0\PinguinDos.iso</Bochs_ISOFile>
+        <Bochs_CompileVBEMultiboot>False</Bochs_CompileVBEMultiboot>
+        <Bochs_ExtractMapFile>False</Bochs_ExtractMapFile>
     </PropertyGroup>
 
     <PropertyGroup>

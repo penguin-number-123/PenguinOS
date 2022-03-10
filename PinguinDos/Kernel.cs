@@ -12,19 +12,21 @@ using Cosmos.HAL;
 using RTC = Cosmos.HAL.RTC;
 using PenguinOS.graphics;
 using PenguinOS.text;
-namespace PenguinOS.Kernel
+//using PenguinOS.ponc;
+namespace PinguinDos 
 {
     
 
     public class Kernel : Sys.Kernel
     {
-        
-        public PenguinOS.graphics.graphicdriver g = new();
+
+        VBECanvas cvs = new(new(1280, 960, (ColorDepth)32));
+        public PenguinOS.graphics.graphicdriver g = new PenguinOS.graphics.graphicdriver();
 
 
 
 
-        static void tree(string sDir, int tabs = 1)
+        public void tree(string sDir, int tabs = 1)
         {
             string tabstr = new string('\t', tabs);
             foreach (var f in Directory.GetFiles(sDir))
@@ -45,9 +47,13 @@ namespace PenguinOS.Kernel
 
         protected override void BeforeRun()
         {
+            
+            
             Sys.FileSystem.VFS.VFSManager.RegisterVFS(fs);
+
             fs.Initialize(true);
             Console.Write("Is this your first time installing Penguin OS v 0.0.2? [Y/N]");
+
             string ftime = Console.ReadLine();
             if (ftime.ToUpper().Contains("Y"))
             {
@@ -66,7 +72,7 @@ namespace PenguinOS.Kernel
                         Console.WriteLine(e.Message);
                     }
                 }
-
+            
 
 
             }
@@ -103,17 +109,7 @@ namespace PenguinOS.Kernel
         }
         
         
-        /*public void handlemouse()
-        {
-            int X = checked((int)Sys.MouseManager.X);
-            int Y = checked((int)Sys.MouseManager.Y);
-            
-            canvas.Clear(Color.Azure);
-            Bitmap bitmap = new(file);
-            canvas.DrawImageAlpha(bitmap, X, Y);
-            
-            
-        }*/
+        
         protected override void Run()
         {
            
@@ -122,14 +118,14 @@ namespace PenguinOS.Kernel
                 try
                 {
 
-                    g.handlemouse();
-                    g.Drawrect(700, 700, 600, 650, Color.Gray);
+                    //g.handlemouse();
+                    //g.Drawrect(700, 700, 600, 650, Color.Gray);
 
                     
                 }
                 catch (Exception e)
                 {
-                    g.exit();
+                    //g.exit();
                     Console.WriteLine(e);
                     while (true) { }
                 }
@@ -148,10 +144,11 @@ namespace PenguinOS.Kernel
                         deltaT = RTC.Second;
                     }
                     frames++;*/
-                    
+                    //PenguinOS.ponc.interperter inter = new();
                     Console.Write($"Penguin Shell@{Directory.GetCurrentDirectory()}>");
                     string cmd = Console.ReadLine();
                     //bool debug = false;
+
 
                     //Handle cases with trailing data
                     if (cmd.Contains(" "))
@@ -159,9 +156,13 @@ namespace PenguinOS.Kernel
                         cmd = cmd.Replace("/", @"\");
                         string[] cmdarr = cmd.Split(" "); //cd c:/users/... -> ["cd", "c:\users\..."]
 
-                        Console.WriteLine($"{cmdarr[0]}, {cmdarr[1]}"); 
+                        //Console.WriteLine($"{cmdarr[0]}, {cmdarr[1]}"); 
                         switch (cmdarr[0])
                         {
+                            case "run":
+                                int[] commands = Array.ConvertAll(cmdarr[1].Split(" "), s => Int32.Parse(s));
+                                //inter.run(commands);
+                                break;
                             case "color":
                                 bool itype = new();
                                 if (cmdarr.Length > 3) { itype = (cmdarr[4] == "-n"); }
@@ -361,14 +362,14 @@ namespace PenguinOS.Kernel
                                 Console.BackgroundColor = ConsoleColor.DarkBlue;
                                 Console.ForegroundColor = ConsoleColor.Blue;
                                 //Encoding.RegisterProvider(CosmosEncodingProvider.Instance);
-                                /*Console.InputEncoding = Encoding.GetEncoding(437); //CP437 for example
+                                Console.InputEncoding = Encoding.GetEncoding(437); //CP437 for example
                                 Console.OutputEncoding = Encoding.GetEncoding(437);
                                 Console.WriteLine("╔═════════════╗");
                                 Console.WriteLine("║             ║▓");
                                 Console.WriteLine("║     Test    ║▓");
                                 Console.WriteLine("║             ║▓");
                                 Console.WriteLine("╚═════════════╝▓");
-                                Console.WriteLine(" ░░░░░▒▒▒▒▒▓▓▓▓▓");*/
+                                Console.WriteLine(" ░░░░░▒▒▒▒▒▓▓▓▓▓");
                                 
                                 Console.ForegroundColor = ConsoleColor.White;
                                 int j = 0;

@@ -1,5 +1,5 @@
 ﻿using Sys = Cosmos.System;
-using System
+using System;
 namespace PenguinOS.filesystem
 {
     class fs
